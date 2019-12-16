@@ -1,0 +1,8 @@
+## admin cli commands to edit the configuration
+embed-server --std-out=echo  --server-config=standalone-openshift.xml
+batch
+/subsystem=elytron:write-attribute(name=final-providers,value=elytron)
+/subsystem=elytron/key-store=fipsKS:add(path=/tmp/KEYSTORE,credential-reference={clear-text=STORE_PASSWORD},type="BCFKS")
+run-batch
+quit
+
